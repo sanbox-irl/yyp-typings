@@ -1,0 +1,20 @@
+{
+  "name": "yyp-typings",
+  "version": "1.0.0",
+  "description": "These typings are for GMS 2 project files (.yyp extension) and resource descriptor files (.yy extension).",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopherwk210/yyp-typings.git"
+  },
+  "types": "./index.d.ts",
+  "keywords": [],
+  "author": "Chris Anselmo <christopherwk210@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christopherwk210/yyp-typings/issues"
+  },
+  "homepage": "https://github.com/christopherwk210/yyp-typings#readme"
+}
