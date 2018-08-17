@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "es2018",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"outDir": "out",
+		"lib": [ "es2018" ],
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"preserveConstEnums": true,
+		"declaration": true,
+		"declarationDir": "./out/declarations/",
+	},
+
+	"include": [
+		"index.ts"
+	]
+}
