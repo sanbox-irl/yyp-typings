@@ -4,11 +4,12 @@
   "description": "These typings are for GMS 2 project files (.yyp extension) and resource descriptor files (.yy extension).",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -- watch"
+    "watch": "tsc -- watch",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/christopherwk210/yyp-typings.git"
+    "url": "git+https://github.com/sanboxrunner/yyp-typings"
   },
   "files": [
     "/out"
@@ -22,9 +23,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/christopherwk210/yyp-typings/issues"
+    "url": "https://github.com/sanboxrunner/yyp-typingsissues"
   },
-  "homepage": "https://github.com/christopherwk210/yyp-typings#readme",
+  "homepage": "https://github.com/sanboxrunner/yyp-typingss#readme",
   "devDependencies": {
     "typescript": "3.0.1"
   }

@@ -155,6 +155,20 @@ export type EventNumber = 72 | 73 | 76 | 77 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 
 
 /** Resource file namespace */
 export namespace Resource {
+    export interface BaseResource {
+        /** Event GUID */
+        id: string;
+
+        /** Internal resource type descriptor (GMEvent) */
+        modelName: string;
+
+        /** Version string, unknown use */
+        mvc: string;
+        
+        /** Resource name */
+        name: string;
+    }
+
     export interface ObjectEvent {
         /** Event GUID */
         id: string;
@@ -181,18 +195,9 @@ export namespace Resource {
         m_owner: string;
     }
 
-    export interface Object {
-        /** Resource GUID */
-        id: string;
-
+    export interface Object extends BaseResource {
         /** Internal resource type descriptor (GMObject) */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+        modelName: "GMObject";
 
         /** List of object events */
         eventList: Array<ObjectEvent>;
@@ -237,27 +242,12 @@ export namespace Resource {
         visible: boolean;
     }
 
-    export interface Options {
-        /** Resource GUID */
-        id: string;
-
+    export interface Options extends BaseResource {
         /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+        modelName: "GMOption";
     }
 
-    export interface Room {
-        /** Resource name */
-        name: string;
-
-        /** Resource GUID */
-        id: string;
-
+    export interface Room extends BaseResource {
         /** The name of the Room Creation code FP, relative to the Room folder itself. */
         creationCodeFile: string;
 
@@ -278,22 +268,17 @@ export namespace Resource {
         layers: Array<Layer>;
 
         /** Internal resource type descriptor */
-        modelName: string;
+        modelName: "GMRoom";
 
         /** Parent Room ID */
         parentID: string;
 
         /** Physics setting of the room. */
         physicsSettings: PhysicsSettings;
-
-        /** Version string, unknown use */
-        mvc: string;
     }
 
-    export interface Layer {
+    export interface Layer extends BaseResource {
         __type: string;
-        name: string;
-        id: string;
         depth: number;
         grid_x: number;
         grid_y: number;
@@ -307,15 +292,11 @@ export namespace Resource {
         layers: Array<Layer>;
         m_parentID: string;
         m_serialiseFrozen: boolean;
-        modelName: string;
-        mvc: string;
         userdefined_depth: boolean;
         visible: boolean;
     }
 
-    export interface Instance {
-        name: string;
-        id: string;
+    export interface Instance extends BaseResource {
         colour: Colour;
         creationCodeFile: string;
         creationCodeType: string;
@@ -325,7 +306,6 @@ export namespace Resource {
         IsDnD: boolean;
         m_originalParentID: string;
         m_serialiseFrozen: boolean;
-        modelName: string;
         name_with_no_file_rename: string;
         objId: string;
         properties: null;
@@ -351,7 +331,9 @@ export namespace Resource {
         PhysicsWorldPixToMeters: number;
         mvc: string;
     }
-
+    /**
+     * We type it as "roomSetting" to reflect the .YY's typing of it.
+     */
     export interface roomSettings {
         id: string;
         Height: number;
@@ -393,32 +375,17 @@ export namespace Resource {
         mvc: string;
     }
 
-    export interface Sprite {
-        /** Resource GUID */
-        id: string;
-
+    /**
+     * Bare bones interface for now. A Sprite has a lot more 
+     * to it than just the BaseResource. Will be added soon.
+     */
+    export interface Sprite extends BaseResource {
         /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+        modelName: "GMSprite";
     }
 
-    export interface Sound {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+    export interface Sound extends BaseResource{
+        modelName: "GMSound"
 
         /** The GUID of the audio group. Unknown where audio group data itself is stored. */
         audioGroupGuid: string;
@@ -438,18 +405,8 @@ export namespace Resource {
         volume: number;
     }
 
-    export interface Path {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+    export interface Path extends BaseResource {
+        modelName: "GMPath"
 
         /** Path closed or open */
         closed: boolean;
@@ -478,32 +435,9 @@ export namespace Resource {
         speed: number;
     }
 
-    export interface View {
-        /** Resource GUID */
-        id: string;
-
+    export interface GMFolder extends BaseResource {
         /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
-    }
-
-    export interface GMFolder {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, appears to be 1.0 or 1.1 */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+        modelName: "GMFolder";
 
         /** An array of the views/resource GUIDs which this folder contains. */
         children: Array<string>;
@@ -521,49 +455,20 @@ export namespace Resource {
         localisedFolderName: string;
     }
 
-    export interface Tileset {
-        /** Resource GUID */
-        id: string;
-
+    export interface Tileset extends BaseResource {
         /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+        modelName: "GMTileSet";
     }
 
-    export interface Script {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
-
+    export interface Script extends BaseResource {
+        modelName: "GMScript"
         IsCompatibility: boolean;
         IsDnD: boolean;
     }
 
-    export interface Font {
-        /** Resource GUID */
-        id: string;
-
+    export interface Font extends BaseResource {
         /** Internal resource type descriptor */
         modelName: "GMFont";
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
 
         /** Checks if AntiAliasing is enabled. Not a real boolean, but always 0 or 1. */
         AntiAlias: PseudoBoolean;
@@ -609,12 +514,12 @@ export namespace Resource {
         };
     }
 
-    export interface Timeline {
+    export interface Timeline extends BaseResource {
         /** Resource GUID */
         id: string;
 
         /** Internal resource type descriptor */
-        modelName: string;
+        modelName: "GMTimeline";
 
         /** Version string, unknown use */
         mvc: string;
@@ -627,62 +532,25 @@ export namespace Resource {
     }
 
     export interface Moment {
-        /** Resource GUID */
-        id: string;
+        modelName: "GMMoment"
 
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Always a blank string for Moments. */
-        name: string;
-
-        /** Describes the .gml file for each moment. Coded as a Create event. */
+        /** Describes the .gml file for each moment. Coded as a Create event.
+         * Yes, this is how it is spelled.
+        */
         evnt: ObjectEvent;
+        moment: number;
     }
 
-    export interface Note {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+    export interface Note extends BaseResource {
+        modelName: "GMNote";
     }
 
-    export interface Extension {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+    export interface Extension extends BaseResource {
+        modelName: "GMExtension";
     }
 
-    export interface Shader {
-        /** Resource GUID */
-        id: string;
-
-        /** Internal resource type descriptor */
-        modelName: string;
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
+    export interface Shader extends BaseResource {
+        modelName: "GMShader";
 
         /** Shader language used. */
         type: ShaderLanguageType;
