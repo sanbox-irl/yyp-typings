@@ -546,6 +546,25 @@ export namespace Resource {
         /** Shader language used. */
         type: ShaderLanguageType;
     }
+
+    /** 
+     * Generic type which can refer to any resource type. Use when you know
+     * that the BaseResource has what you need, which all of these contain.
+     */
+    export type GMResource =
+    | GMFolder
+    | Sprite
+    | Tileset
+    | Sound
+    | Path
+    | Script
+    | Shader
+    | Font
+    | Timeline
+    | Object
+    | Room
+    | Note
+    | Extension
 }
 
 /** Parent project entry of a YYP */
