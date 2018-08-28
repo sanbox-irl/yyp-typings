@@ -16,7 +16,8 @@
     "LICENSE.txt",
     "README.md"
   ],
-  "typings": "./out/declarations.index.d.ts",
+  "main": "./out/index.js",
+  "typings": "./out/declarations/index.d.ts",
   "keywords": [],
   "author": "The r/GameMaker Discord",
   "contributors": [
@@ -30,5 +31,6 @@
   "homepage": "https://github.com/sanboxrunner/yyp-typings#readme",
   "devDependencies": {
     "typescript": "^3.0.1"
-  }
+  },
+  "dependencies": {}
 }

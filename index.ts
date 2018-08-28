@@ -503,7 +503,7 @@ export namespace Resource {
         Value: {
             id: string;
             modelName: "GMGlyph";
-            mvc: "1.0";
+            mvc: string;
             character: number;
             h: number;
             offset: number;
