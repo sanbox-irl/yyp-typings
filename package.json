@@ -1,6 +1,6 @@
 {
   "name": "yyp-typings",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "These typings are for GMS 2 project files (.yyp extension) and resource descriptor files (.yy extension).",
   "scripts": {
     "build": "tsc",
@@ -12,7 +12,9 @@
     "url": "git+https://github.com/sanboxrunner/yyp-typings"
   },
   "files": [
-    "/out"
+    "out",
+    "LICENSE.txt",
+    "README.md"
   ],
   "typings": "/out/declarations.index.d.ts",
   "keywords": [],
@@ -28,5 +30,8 @@
   "homepage": "https://github.com/sanboxrunner/yyp-typingss#readme",
   "devDependencies": {
     "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "yyp-typings": "^1.2.0"
   }
 }

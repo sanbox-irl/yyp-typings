@@ -515,17 +515,8 @@ export namespace Resource {
     }
 
     export interface Timeline extends BaseResource {
-        /** Resource GUID */
-        id: string;
-
         /** Internal resource type descriptor */
         modelName: "GMTimeline";
-
-        /** Version string, unknown use */
-        mvc: string;
-
-        /** Resource name */
-        name: string;
 
         /** Array of "moments" in the timeline */
         momentList: Array<Moment>;
