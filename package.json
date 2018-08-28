@@ -1,6 +1,6 @@
 {
   "name": "yyp-typings",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "These typings are for GMS 2 project files (.yyp extension) and resource descriptor files (.yy extension).",
   "scripts": {
     "build": "tsc",
@@ -12,11 +12,11 @@
     "url": "git+https://github.com/sanboxrunner/yyp-typings"
   },
   "files": [
-    "out",
+    "./out",
     "LICENSE.txt",
     "README.md"
   ],
-  "typings": "/out/declarations.index.d.ts",
+  "typings": "./out/declarations.index.d.ts",
   "keywords": [],
   "author": "The r/GameMaker Discord",
   "contributors": [
@@ -25,9 +25,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sanboxrunner/yyp-typingsissues"
+    "url": "https://github.com/sanboxrunner/yyp-typings/issues"
   },
-  "homepage": "https://github.com/sanboxrunner/yyp-typingss#readme",
+  "homepage": "https://github.com/sanboxrunner/yyp-typings#readme",
   "devDependencies": {
     "typescript": "^3.0.1"
   },
