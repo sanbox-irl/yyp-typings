@@ -1,6 +1,6 @@
 {
   "name": "yyp-typings",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "These typings are for GMS 2 project files (.yyp extension) and resource descriptor files (.yy extension).",
   "scripts": {
     "build": "tsc",
