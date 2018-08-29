@@ -177,7 +177,7 @@ export namespace EventNumber {
   export const AsyncSaveLoad: 72 = 72;
   export const AsyncSocial = 70;
   export const AsyncSteam: 69 = 69;
-  export const AsyncSystem: 75 = 75
+  export const AsyncSystem: 75 = 75;
 }
 export type EventNumber =
   | 72
