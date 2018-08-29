@@ -37,6 +37,29 @@ export namespace PathKind {
 }
 export type PathKind = 0 | 1;
 
+export namespace SpriteBBoxMode {
+  export const Automatic: 0 = 0;
+  export const FullImage: 1 = 1;
+  export const Manual: 2 = 2;
+}
+export type SpriteBBoxMode = 0 | 1 | 2;
+
+export namespace SpriteCollisionKind {
+  export const Rectangle: 1 = 1;
+  export const RotatedRectangle: 5 = 5;
+  export const Ellipse : 2 = 2;
+  export const Diamond: 3 = 3;
+  export const Precise: 0 = 0;
+  export const PrecisePerFrame: 0 = 0;
+}
+export type SpriteCollisionKind = 0 | 1 | 2 | 3 | 5
+
+export namespace SpritePlaybackSpeed {
+  export const FramesPerSecond: 0 = 0;
+  export const FramesPerGameFrame: 1 = 1;
+}
+export type SpritePlaybackSpeed = 0 | 1;
+
 /** Event 'type' used in  Events inside ObjectYY files. Within each 'type'
  *  there is also a `number` which describes a "sub-type" of the event.
  *  Use `EventNumber` for that subtype.
@@ -478,6 +501,66 @@ export namespace Resource {
   export interface Sprite extends BaseResource {
     /** Internal resource type descriptor */
     modelName: "GMSprite";
+
+    For3D: boolean;
+    HTile: boolean;
+    VTile: boolean;
+    bbox_bottom: number;
+    bbox_left: number;
+    bbox_right: number;
+    bbox_top: number;
+    bboxmode: SpriteBBoxMode;
+    colkind: SpriteCollisionKind;
+    coltolerance: number;
+    edgeFiltering: boolean;
+    frames: Frame[];
+    layers: ImageLayer[]
+    gridX: number;
+    gridY: number;
+    height: number;
+    origin: number;
+    originLocked: boolean;
+    playbackSpeed: number;
+    playbackSpeedtype: SpritePlaybackSpeed;
+    premultiplyAlpha: boolean;
+    sepmasks: boolean;
+    swatchColours: null;
+    swfPrecision: number;
+    textureGroupId: string;
+    type: 0;
+    width: number;
+    xorig: number;
+    yorig: number;
+
+  }
+
+  export interface Frame {
+    id: string;
+    modelName: "GMSpriteFrame",
+    mvc: "1.0",
+    SpriteID: string;
+    compositeImage: SpriteImage,
+    images: SpriteImage[]
+  }
+
+  export interface SpriteImage {
+    id: string;
+    modelName: "GMSpriteImage",
+    mvc: "1.0",
+    FrameId: string;
+    LayerId: string;
+  }
+
+  export interface ImageLayer {
+    id: string;
+    modelName: "GMImageLayer",
+    mvc: string;
+    SpriteId: string;
+    blendMode: number;
+    isLocked: boolean;
+    name: string;
+    opacity: number;
+    visible: boolean;
   }
 
   export interface Sound extends BaseResource {
