@@ -325,10 +325,10 @@ export namespace Resource {
     maskSpriteId: string;
 
     /** Properties overriden. */
-    overriddenProperties: Array<object>;
+    overriddenProperties: Array<object> | null;
 
     /** Properties are variables set using the "variables" box in the IDE. */
-    properties: Array<object>;
+    properties: Array<object> | null;
 
     /** GUID of parent object */
     parentObjectId: string;
