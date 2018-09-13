@@ -633,7 +633,7 @@ export namespace Resource {
     /** A code, likely used for adding localizations. */
     localisedFolderName: localisedNames;
   }
-  type localisedNames = "" | "ResourceTree_Fonts" | "ResourceTree_Scripts" | "ResourceTree_Notes" | "ResourceTree_Sounds" | "ResourceTree_Tilesets" | "ResourceTree_Configs" | "ResourceTree_Paths" | "ResourceTree_Sprites" | "ResourceTree_IncludedFiles" | "ResourceTree_Extensions" | "ResourceTree_Objects" | "ResourceTree_Options" | "ResourceTree_Timelines" | "ResourceTree_Shaders" | "ResourceTree_Rooms"
+  export type localisedNames = "" | "ResourceTree_Fonts" | "ResourceTree_Scripts" | "ResourceTree_Notes" | "ResourceTree_Sounds" | "ResourceTree_Tilesets" | "ResourceTree_Configs" | "ResourceTree_Paths" | "ResourceTree_Sprites" | "ResourceTree_IncludedFiles" | "ResourceTree_Extensions" | "ResourceTree_Objects" | "ResourceTree_Options" | "ResourceTree_Timelines" | "ResourceTree_Shaders" | "ResourceTree_Rooms"
 
   export interface Tileset extends BaseResource {
     /** Internal resource type descriptor */
