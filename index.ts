@@ -30,6 +30,14 @@ export namespace SoundType {
 }
 export type SoundType = 0 | 1 | 2;
 
+/** Silly enum used for Argument type in an Extension */
+export namespace ArgumentType {
+  export const StringType: 1 = 1;
+  export const DoubleType: 2 = 2;
+}
+export type ExtensionFunctionType = 1 | 2;
+
+
 /** Path 'kind' used in a PathYY file */
 export namespace PathKind {
   export const Straight: 0 = 0;
@@ -271,6 +279,8 @@ export type EventNumber =
   | 63
   | 62
   | 60;
+
+
 
 /** Resource file namespace */
 export namespace Resource {
@@ -718,6 +728,78 @@ export namespace Resource {
 
   export interface Extension extends BaseResource {
     modelName: "GMExtension";
+
+    files: Array<GMExtensionFile>;
+  }
+
+  export interface GMExtensionFile extends BaseResource {
+    modelName: "GMExtensionFile";
+
+    /** Array of ProxyFiles. Unknown usage. */
+    ProxyFiles: Array<any>;
+
+    /** These are the constants, or macros, which the extension provides. */
+    constants: Array<GMExtensionConstant>;
+
+    /** These are the functions which the extension provides. */
+    functions: Array<GMExtensionFunction>;
+
+    /** The initial function called. This is the name of the function. */
+    init: string;
+
+    /** This is the type of the Extension. It is unclear what the types are. */
+    kind: number;
+
+    /** Order of the functions. The strings here refer to the UUIDs of the functions, which is their ID. */
+    irder: Array<string>;
+
+    /** The original name of the function. Unknown usage. */
+    origname: string;
+
+    /** Whether it is compressed. Unknown usage. */
+    uncompress: boolean;
+
+  }
+
+  export interface GMExtensionConstant extends BaseResource {
+    modelName: "GMExtensionConstant",
+    
+    /** The name of the Macro */
+    constantName: string;
+
+    /** If the macro should be hidden from the user */
+    hidden: boolean;
+
+    /** This is a GML snippet which the Macro will be replaced with. It is identical to #macro someMacro THIS_IS_THE_SNIPPET. */
+    value: string;
+  }
+
+  export interface GMExtensionFunction extends BaseResource {
+    modelName: "GMExtensionFunction";
+
+    /** The number of arguments which the extension has. Note: -1 indicates that a variable number of arguments are accepted. */
+    argCount: number;
+
+    /** Array of argument type. See @type ArgumentType for these: */
+    args: Array<ExtensionFunctionType>
+
+    /** The external name of the function. */
+    externalName: string;
+
+    /** Help is the popup which will come up in GMS2's autocomplete. It is essentially a signature line. */
+    help: string;
+
+    /** Controls if the function is visible to the user or not. */
+    hidden: boolean;
+
+    /** This is the type of the Extension, inherited. It is unclear what the types are.  */
+    kind: number;
+
+    /** This is the name as the user will see it of the function */
+    name: string;
+
+    /** This is the ArgumentType return. */
+    returnType: ExtensionFunctionType;
   }
 
   export interface Shader extends BaseResource {
