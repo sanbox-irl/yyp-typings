@@ -728,6 +728,9 @@ export namespace Resource {
 
   export interface Extension extends BaseResource {
     modelName: "GMExtension";
+    /** This is where the extension creator specifies what extra resources are there. */
+    IncludedResources: any[];
+
 
     files: Array<GMExtensionFile>;
   }
@@ -744,14 +747,23 @@ export namespace Resource {
     /** These are the functions which the extension provides. */
     functions: Array<GMExtensionFunction>;
 
-    /** The initial function called. This is the name of the function. */
+    /** Specifies to which targets to compile extension. Bit. */
+    copyToTargets: number;
+
+    /** This is the name of the file which will be in the same folder. */
+    filename: string;
+
+    /** The initial function called. */
     init: string;
+
+    /** The final function called by the extension. */
+    final: string;
 
     /** This is the type of the Extension. It is unclear what the types are. */
     kind: number;
 
     /** Order of the functions. The strings here refer to the UUIDs of the functions, which is their ID. */
-    irder: Array<string>;
+    order: Array<string>;
 
     /** The original name of the function. Unknown usage. */
     origname: string;
@@ -781,7 +793,7 @@ export namespace Resource {
     argCount: number;
 
     /** Array of argument type. See @type ArgumentType for these: */
-    args: Array<ExtensionFunctionType>
+    args: ExtensionFunctionType[];
 
     /** The external name of the function. */
     externalName: string;
