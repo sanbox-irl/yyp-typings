@@ -876,8 +876,8 @@ export interface ParentProject {
   /** GUID of the parent project */
   id: string;
 
-  /** Describes object entry type, which is always "GMProjectParent" for ParentProjects */
-  modelName: string;
+  /** Describes object entry type. */
+  modelName: "GMProjectParent";
 
   /** A version number string, unknown use */
   mvc: string;
@@ -903,7 +903,7 @@ export interface YYPResource {
     id: string;
 
     /** Describes object entry type, which is always "GMResourceInfo" for YYPResources */
-    modelName: string;
+    modelName: Resource.ModelNames;
 
     /** A version number string, unknown use */
     mvc: string;
@@ -931,7 +931,7 @@ export interface YYP {
   id: string;
 
   /** Usually contains resource type, in this case GMProject */
-  modelName: string;
+  modelName: "GMProject";
 
   /** A version number string, unknown use */
   mvc: string;
