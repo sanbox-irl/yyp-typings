@@ -903,7 +903,7 @@ export interface YYPResource {
     id: string;
 
     /** Describes object entry type, which is always "GMResourceInfo" for YYPResources */
-    modelName: Resource.ModelNames;
+    modelName: "GMResourceInfo";
 
     /** A version number string, unknown use */
     mvc: string;
@@ -921,7 +921,7 @@ export interface YYPResource {
     resourcePath: string;
 
     /** Describes the resource type */
-    resourceType: string;
+    resourceType: Resource.ModelNames;
   };
 }
 
