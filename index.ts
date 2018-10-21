@@ -37,7 +37,6 @@ export namespace ArgumentType {
 }
 export type ExtensionFunctionType = 1 | 2;
 
-
 /** Path 'kind' used in a PathYY file */
 export namespace PathKind {
   export const Straight: 0 = 0;
@@ -55,12 +54,12 @@ export type SpriteBBoxMode = 0 | 1 | 2;
 export namespace SpriteCollisionKind {
   export const Rectangle: 1 = 1;
   export const RotatedRectangle: 5 = 5;
-  export const Ellipse : 2 = 2;
+  export const Ellipse: 2 = 2;
   export const Diamond: 3 = 3;
   export const Precise: 0 = 0;
   export const PrecisePerFrame: 0 = 0;
 }
-export type SpriteCollisionKind = 0 | 1 | 2 | 3 | 5
+export type SpriteCollisionKind = 0 | 1 | 2 | 3 | 5;
 
 export namespace SpritePlaybackSpeed {
   export const FramesPerSecond: 0 = 0;
@@ -280,16 +279,34 @@ export type EventNumber =
   | 62
   | 60;
 
-
-
 /** Resource file namespace */
 export namespace Resource {
+  export declare type ModelNames =
+    | 'GMObject'
+    | 'GMIncludedFile'
+    | 'GMExtension'
+    | "GMExtensionFile"
+    | "GMExtensionFunction"
+    | "GMExtensionConstant"
+    | 'GMFont'
+    | 'GMNote'
+    | 'GMOption'
+    | 'GMPath'
+    | 'GMRoom'
+    | "GMScript"
+    | "GMShader"
+    | "GMSound"
+    | "GMSprite"
+    | "GMTileSet"
+    | "GMFolder"
+    | "GMTimeline";
+
   export interface BaseResource {
     /** Event GUID */
     id: string;
 
     /** Internal resource type descriptor (GMEvent) */
-    modelName: string;
+    modelName: ModelNames;
 
     /** Version string, unknown use */
     mvc: string;
@@ -326,7 +343,7 @@ export namespace Resource {
 
   export interface Object extends BaseResource {
     /** Internal resource type descriptor (GMObject) */
-    modelName: "GMObject";
+    modelName: 'GMObject';
 
     /** List of object events */
     eventList: Array<ObjectEvent>;
@@ -373,7 +390,7 @@ export namespace Resource {
 
   export interface Options extends BaseResource {
     /** Internal resource type descriptor */
-    modelName: "GMOption";
+    modelName: 'GMOption';
   }
 
   export interface Room extends BaseResource {
@@ -397,7 +414,7 @@ export namespace Resource {
     layers: Array<Layer>;
 
     /** Internal resource type descriptor */
-    modelName: "GMRoom";
+    modelName: 'GMRoom';
 
     /** Parent Room ID */
     parentID: string;
@@ -510,7 +527,7 @@ export namespace Resource {
    */
   export interface Sprite extends BaseResource {
     /** Internal resource type descriptor */
-    modelName: "GMSprite";
+    modelName: 'GMSprite';
 
     For3D: boolean;
     HTile: boolean;
@@ -524,7 +541,7 @@ export namespace Resource {
     coltolerance: number;
     edgeFiltering: boolean;
     frames: Frame[];
-    layers: ImageLayer[]
+    layers: ImageLayer[];
     gridX: number;
     gridY: number;
     height: number;
@@ -541,29 +558,28 @@ export namespace Resource {
     width: number;
     xorig: number;
     yorig: number;
-
   }
 
   export interface Frame {
     id: string;
-    modelName: "GMSpriteFrame",
-    mvc: "1.0",
+    modelName: 'GMSpriteFrame';
+    mvc: '1.0';
     SpriteID: string;
-    compositeImage: SpriteImage,
-    images: SpriteImage[]
+    compositeImage: SpriteImage;
+    images: SpriteImage[];
   }
 
   export interface SpriteImage {
     id: string;
-    modelName: "GMSpriteImage",
-    mvc: "1.0",
+    modelName: 'GMSpriteImage';
+    mvc: '1.0';
     FrameId: string;
     LayerId: string;
   }
 
   export interface ImageLayer {
     id: string;
-    modelName: "GMImageLayer",
+    modelName: 'GMImageLayer';
     mvc: string;
     SpriteId: string;
     blendMode: number;
@@ -574,7 +590,7 @@ export namespace Resource {
   }
 
   export interface Sound extends BaseResource {
-    modelName: "GMSound";
+    modelName: 'GMSound';
 
     /** The GUID of the audio group. Unknown where audio group data itself is stored. */
     audioGroupGuid: string;
@@ -595,7 +611,7 @@ export namespace Resource {
   }
 
   export interface Path extends BaseResource {
-    modelName: "GMPath";
+    modelName: 'GMPath';
 
     /** Path closed or open */
     closed: boolean;
@@ -626,7 +642,7 @@ export namespace Resource {
 
   export interface GMFolder extends BaseResource {
     /** Internal resource type descriptor */
-    modelName: "GMFolder";
+    modelName: 'GMFolder';
 
     /** An array of the views/resource GUIDs which this folder contains. */
     children: Array<string>;
@@ -643,22 +659,38 @@ export namespace Resource {
     /** A code, likely used for adding localizations. */
     localisedFolderName: localisedNames;
   }
-  export type localisedNames = "" | "ResourceTree_Fonts" | "ResourceTree_Scripts" | "ResourceTree_Notes" | "ResourceTree_Sounds" | "ResourceTree_Tilesets" | "ResourceTree_Configs" | "ResourceTree_Paths" | "ResourceTree_Sprites" | "ResourceTree_IncludedFiles" | "ResourceTree_Extensions" | "ResourceTree_Objects" | "ResourceTree_Options" | "ResourceTree_Timelines" | "ResourceTree_Shaders" | "ResourceTree_Rooms"
+  export type localisedNames =
+    | ''
+    | 'ResourceTree_Fonts'
+    | 'ResourceTree_Scripts'
+    | 'ResourceTree_Notes'
+    | 'ResourceTree_Sounds'
+    | 'ResourceTree_Tilesets'
+    | 'ResourceTree_Configs'
+    | 'ResourceTree_Paths'
+    | 'ResourceTree_Sprites'
+    | 'ResourceTree_IncludedFiles'
+    | 'ResourceTree_Extensions'
+    | 'ResourceTree_Objects'
+    | 'ResourceTree_Options'
+    | 'ResourceTree_Timelines'
+    | 'ResourceTree_Shaders'
+    | 'ResourceTree_Rooms';
 
   export interface Tileset extends BaseResource {
     /** Internal resource type descriptor */
-    modelName: "GMTileSet";
+    modelName: 'GMTileSet';
   }
 
   export interface Script extends BaseResource {
-    modelName: "GMScript";
+    modelName: 'GMScript';
     IsCompatibility: boolean;
     IsDnD: boolean;
   }
 
   export interface Font extends BaseResource {
     /** Internal resource type descriptor */
-    modelName: "GMFont";
+    modelName: 'GMFont';
 
     /** Checks if AntiAliasing is enabled. Not a real boolean, but always 0 or 1. */
     AntiAlias: PseudoBoolean;
@@ -692,7 +724,7 @@ export namespace Resource {
     Key: number;
     Value: {
       id: string;
-      modelName: "GMGlyph";
+      modelName: 'GMGlyph';
       mvc: string;
       character: number;
       h: number;
@@ -706,14 +738,14 @@ export namespace Resource {
 
   export interface Timeline extends BaseResource {
     /** Internal resource type descriptor */
-    modelName: "GMTimeline";
+    modelName: 'GMTimeline';
 
     /** Array of "moments" in the timeline */
     momentList: Array<Moment>;
   }
 
   export interface Moment {
-    modelName: "GMMoment";
+    modelName: 'GMMoment';
 
     /** Describes the .gml file for each moment. Coded as a Create event.
      * Yes, this is how it is spelled.
@@ -723,20 +755,19 @@ export namespace Resource {
   }
 
   export interface Note extends BaseResource {
-    modelName: "GMNote";
+    modelName: 'GMNote';
   }
 
   export interface Extension extends BaseResource {
-    modelName: "GMExtension";
+    modelName: 'GMExtension';
     /** This is where the extension creator specifies what extra resources are there. */
     IncludedResources: any[];
-
 
     files: Array<GMExtensionFile>;
   }
 
   export interface GMExtensionFile extends BaseResource {
-    modelName: "GMExtensionFile";
+    modelName: 'GMExtensionFile';
 
     /** Array of ProxyFiles. Unknown usage. */
     ProxyFiles: Array<any>;
@@ -770,12 +801,11 @@ export namespace Resource {
 
     /** Whether it is compressed. Unknown usage. */
     uncompress: boolean;
-
   }
 
   export interface GMExtensionConstant extends BaseResource {
-    modelName: "GMExtensionConstant",
-    
+    modelName: 'GMExtensionConstant';
+
     /** The name of the Macro */
     constantName: string;
 
@@ -787,7 +817,7 @@ export namespace Resource {
   }
 
   export interface GMExtensionFunction extends BaseResource {
-    modelName: "GMExtensionFunction";
+    modelName: 'GMExtensionFunction';
 
     /** The number of arguments which the extension has. Note: -1 indicates that a variable number of arguments are accepted. */
     argCount: number;
@@ -815,7 +845,7 @@ export namespace Resource {
   }
 
   export interface Shader extends BaseResource {
-    modelName: "GMShader";
+    modelName: 'GMShader';
 
     /** Shader language used. */
     type: ShaderLanguageType;
